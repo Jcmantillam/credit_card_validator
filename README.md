@@ -9,6 +9,14 @@ cd card_validator
 docker-compose build
 docker-compose up
 ```
+## Tarjetas soportadas
+Para realizar la validación, se ha utiilizado como base el artículo: https://es.wikipedia.org/wiki/N%C3%BAmero_de_tarjeta_bancaria. Con base a este artículo, las siguientes tarjetas se encuentran soportadas:
+- American Express
+- Diners Club
+- Discover
+- JCB
+- MasterCard
+- Visa
 
 ## Tests
 Las pruebas realizadas se encuentran en `/cardverifier/tests`:
@@ -40,5 +48,79 @@ El servicio habilitado, permite que dado un número de tarjeta de crédito, se v
   {
     "valid": true,
     "emisor": "Visa"
+  }
+  ```
+### Ejemplos
+* **Entradas válidas**
+  <br><br>
+  **Entrada:**<br>
+  ```
+  {
+    "card_number": "4013021266290"
+  }
+  ```
+  * **Respuesta:**<br>
+  ```
+  {
+    "valid": true,
+    "emisor": "Visa"
+  }
+  ```
+  <br><br>
+  **Entrada:**<br>
+  ```
+  {
+    "card_number": "370485935825278"
+  }
+  ```
+  * **Respuesta:**<br>
+  ```
+  {
+    "valid": true,
+    "emisor": "American Express"
+  }
+  ```
+  <br><br>
+  **Entrada:**<br>
+  ```
+  {
+    "card_number": "6011 5947 8671 7005"
+  }
+  ```
+  * **Respuesta:**<br>
+  ```
+  {
+    "valid": true,
+    "emisor": "Discover"
+  }
+  ```
+  <br><br>
+* **Entradas inválidas o erróneas**
+  <br><br>
+  **Entrada:**<br>
+  ```
+  {
+    "card_number": "123456789"
+  }
+  ```
+  * **Respuesta:**<br>
+  ```
+  {
+    "valid": false
+  }
+  ```
+  <br><br>
+  **Entrada:**<br>
+  ```
+  {
+    "card_number": "a370485935825278"
+  }
+  ```
+  * **Respuesta:**<br>
+  ```
+  {
+    "not_digit": [
+        "'a' is not a digit."
+    ]
   }
   ```
