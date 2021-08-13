@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Search Box - pure html and css</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  {% load static %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+<main>
+    <h1>Validar número de tarjeta de crédito</h1><br>
+    <h5>Ingresa el número de la terjeta de crédito que deseas validar</h5>
+    <form action="" method="post">
+        {% csrf_token %}
+        <br><br>
+        <div class="SearchBox">
+            <input required="required" name="number" type="number" class="SearchBox-input" placeholder="{{number}}">
+                <button type="submit" class="SearchBox-button">
+                    <i class="SearchBox-icon  material-icons">search</i>
+                </button>
+        </div>
+    </form>
+    <br><br><br>
+    {% if result %}
+    <div class="card text-white bg-dark mb-3" style="width: 500px;text-align: center;">
+        <div class="card-header"><h4>Número consultado: <span style="color:violet">{{number}}</span></h4></div>
+        <div style="text-align: center;" class="card-body">
+          <h5 class="card-title">
+            Validación de la tarjeta
+            {% if result.valid %}
+                <p style="color:green; text-align: center;";>Válida</p>
+            {% else %}
+                <p style="color:red; text-align: center;";>Inválida</p>
+            {% endif %} 
+          </h5>
+          <p class="card-title">
+            <h5>Emisor</h5>
+            {% if result.valid %}
+                <span style="color: turquoise;"><h5>{{result.emisor}}</h5></span>
+            {% else %}
+                <h5>-----</h5>
+            {% endif %} 
+          </p>
+        </div>
+      </div>
+    {% endif %}
+</main>
+ 
+</body>
+</html>

@@ -1,0 +1,5 @@
+django==3.1.7
+django-rest-framework
+card_identifier
+python-decouple
+requests
