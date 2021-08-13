@@ -9,6 +9,14 @@ cd card_validator
 docker-compose build
 docker-compose up
 ```
+## Tarjetas soportadas
+Para realizar la validación, se ha utiilizado como base el artículo: https://es.wikipedia.org/wiki/N%C3%BAmero_de_tarjeta_bancaria. Con base a este artículo, las siguientes tarjetas se encuentran soportadas:
+- American Express
+- Diners Club
+- Discover
+- JCB
+- MasterCard
+- Visa
 
 ## Tests
 Las pruebas realizadas se encuentran en `/cardverifier/tests`:
