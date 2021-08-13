@@ -42,3 +42,17 @@ El servicio habilitado, permite que dado un número de tarjeta de crédito, se v
     "emisor": "Visa"
   }
   ```
+* **Ejemplos de éxito**
+  * **Entrada:**<br>
+  ```
+  {
+    "card_number": "4013021266290"
+  }
+  ```
+  * **Respuesta:**<br>
+  ```
+  {
+    "valid": true,
+    "emisor": "Visa"
+  }
+  ```
